@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         int counterEl = 0;
         int find;
-        //boolean checker = true;
         Integer elMas;
         ArrayList<Integer> mas = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
@@ -19,6 +18,6 @@ public class Main {
         System.out.println("Введите число для поиска:");
         find = sc.nextInt();
         BinSort binSearch = new BinSort();
-        System.out.println("Элемент найден за " + binSearch.Search(find, mas) + " шагов");
+        System.out.println("Элемент найден за " + binSearch.search(find, mas) + " шагов");
     }
 }
