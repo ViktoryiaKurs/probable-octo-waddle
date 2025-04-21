@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import static homework.hw3collections.task2.Display.*;
 
 /*
 Реализуйте программу, которая:
@@ -23,43 +24,72 @@ public class ActionTrackerApp {
     private String lastRemoved;
     Scanner scan = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        ActionTrackerApp app = new ActionTrackerApp();
-        app.start();
-    }
-
-    void start(){
+    void start() {
         String input;
-        do{
+
+        printGreetings();
+        printListOfCommands();
+
+        do {
             input = scan.nextLine();
+            String[] commandAndInput = input.split(" ", 2);
 
-            if (input.startsWith("add")){
-
+            switch (commandAndInput[0]) {
+                case "add":
+                    if (commandAndInput.length == 1) {
+                        System.out.println("You should write text you want to add after the command");
+                    } else {
+                        strings.add(commandAndInput[1]);
+                        lastAdded = commandAndInput[1];
+                        history.add(input);
+                    }
+                    break;
+                case "undo":
+                    strings.remove(lastAdded);
+                    lastRemoved = lastAdded;
+                    history.add(input);
+                    break;
+                case "redo":
+                    strings.add(lastRemoved);
+                    history.add(input);
+                    break;
+                case "print":
+                    strings.forEach(System.out::println);
+                    history.add(input);
+                    break;
+                case "hist":
+                    if (commandAndInput.length > 1) {
+                        if (commandAndInput[1].equals("all")) {
+                            printHistory(0);
+                            history.add(input);
+                        } else {
+                            System.out.println("No such command");
+                        }
+                    } else {
+                        int startIndex = Math.max(0, history.size() - 5);
+                        printHistory(startIndex);
+                        history.add(input);
+                    }
+                    break;
+                case "help":
+                    printListOfCommands();
+                    history.add(input);
+                    break;
+                case "exit":
+                    input = "exit";
+                    System.out.println("See you next time");
+                    break;
+                default:
+                    System.out.println("No such command");
+                    break;
             }
 
         } while (!input.equals("exit"));
     }
 
-    void printGreetings() {
-        System.out.println("""
-                Welcome to action tracker app!
-                The whole purpose of this small program is to show off the history preserving functionality using LinkedList
-                """);
+    private void printHistory(int startIndex){
+        for (; startIndex < history.size(); startIndex++) {
+            System.out.println(startIndex+1 + ". " + history.get(startIndex));
+        }
     }
-
-    void printListOfCommands() {
-        System.out.println("""
-                List of commands:
-                add <text> - add some text to existing list
-                undo - remove the last string you added
-                redo - add back last string you removed with "undo"
-                print - show the current list of strings
-                hist - show the last 5 actions you did
-                hist all - shows the full history of your actions
-                help - show list of commands
-                exit - exit the program
-                """);
-    }
-
-
 }
