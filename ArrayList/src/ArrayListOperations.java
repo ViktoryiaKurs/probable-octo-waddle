@@ -32,8 +32,7 @@ public class ArrayListOperations {
     public void deleteEvenNumbersOfTheList(){
         Iterator<Integer> iterator = userListOfNumbers.iterator();
         while (iterator.hasNext()){
-            Integer currentElementOfList = iterator.next();
-            if (currentElementOfList % 2 == 0){
+            if (iterator.next() % 2 == 0){
                 iterator.remove();
             }
         }
