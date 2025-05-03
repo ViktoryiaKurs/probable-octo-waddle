@@ -1,10 +1,10 @@
 package animals;
 
 public class Dog extends Animal{
-     String name ="Ralf";
-     int age = 1;
-     String breed = "German Shepherd";//порода немецкая овчарка
-     String sound = "gav-gav";
+   private   String name ="Ralf";
+   private   int age = 1;
+     private String breed = "German Shepherd";//порода немецкая овчарка
+     private String sound = "gav-gav";
 
 
      public void makeSound(){
