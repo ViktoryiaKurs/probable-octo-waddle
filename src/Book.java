@@ -1,8 +1,8 @@
 public class Book {
 
-        String title;
-        String author;
-        int year;
+      private   String title;
+       private String author;
+      private   int year;
 
         // Конструктор
         Book(String title, String author, int year) {
@@ -10,8 +10,27 @@ public class Book {
             this.author = author;
             this.year = year;
         }
+        public String getTitle(){
+            return title;
+        }
+        public String getAuthor(){
+            return author;
+        }
+        public int getYear(){
+            return year;
+        }
+        public void setTitle(String title){
+            this.title=title;
+        }
+        public void setAuthor(String author){
+            this.author=author;
+        }
 
-        // Метод для вывода информации о книге
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    // Метод для вывода информации о книге
         void displayInfo() {
             System.out.println("Название: " + title);
             System.out.println("Автор: " + author);
@@ -19,16 +38,6 @@ public class Book {
             System.out.println();
         }
 
-        // Точка входа
-        public static void main(String[] args) {
-            Book book1 = new Book("Война и мир", "Лев Толстой", 1869);
-            Book book2 = new Book("Преступление и наказание", "Фёдор Достоевский", 1866);
-            Book book3 = new Book("Мастер и Маргарита", "Михаил Булгаков", 1967);
-
-            book1.displayInfo();
-            book2.displayInfo();
-            book3.displayInfo();
-        }
     }
 
 

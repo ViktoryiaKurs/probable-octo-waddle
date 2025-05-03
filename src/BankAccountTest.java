@@ -1,5 +1,3 @@
-package HomeworkTest;
-
 public class BankAccountTest {
     public static void main(String[] args) {
         BankAccount account = new BankAccount("123456", 1000);

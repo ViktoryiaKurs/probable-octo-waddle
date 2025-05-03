@@ -1,5 +1,5 @@
 public class BankAccount {
-    private String accountNumber;
+    final String accountNumber;
     private double balance;
 
     public BankAccount(String accountNumber, double initialBalance) {
@@ -29,12 +29,5 @@ public class BankAccount {
         System.out.println("Баланс на счету " + accountNumber + ": " + balance);
     }
 
-    public static void main(String[] args) {
-        BankAccount account = new BankAccount("123456", 1000);
-        account.displayBalance();
-        account.deposit(500);
-        account.withdraw(300);
-        account.withdraw(2000);
-        account.displayBalance();
-    }
+
 }
